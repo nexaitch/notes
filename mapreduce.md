@@ -1,6 +1,10 @@
+# What the hell is a flatmap? A short guide to list operations in Spark RDD
+
 So I've seen a couple people struggle with the spark RDD API, and that's probably because we're not used to thinking about processing sequential data (such as lists) with the spark library functions `.map()`, `.filter()`, and `.reduce()`. For most of us, used to programming with loops and variables, it can be a bit of a challenge to break out of these patterns and work with these new functions.
 
 Actually these functions are a lot older than Spark, dating back to a style of programming known as Functional Programming, which takes a very different perspective on the way we process data.
+
+## A simple example:
 
 Let's illustrate this by considering a simple problem: we are given a list of numbers as our data, and we wish to compute the sum of all the squares in our dataset (e.g. to compute the variance later).
 
