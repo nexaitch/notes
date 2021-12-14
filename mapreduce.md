@@ -24,7 +24,7 @@ In this case the steps required are evident from the problem statement. We are a
 
 Visually this is shown in the figure below:
 
-![Computing sum of squares using map followed by reduce](mapreduce.png){:height="512px" width="512px"}
+<img src="mapreduce.png" width="256" height="256">
 
 In PySpark we can write this as a combination of the two above steps:
 
