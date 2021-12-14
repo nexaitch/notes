@@ -6,7 +6,7 @@ Actually these functions are a lot older than Spark, dating back to a style of p
 
 ## A simple example:
 
-Let's illustrate this by considering a simple problem: we are given a list of numbers as our data, and we wish to compute the sum of all the squares in our dataset (e.g. to compute the variance later).
+Let's illustrate this by considering a simple problem: we are given a list of numbers as our data, and we wish to compute the sum of all the squares in our dataset.
 
 In an imperative style (which is probably what you're used to, using Python), you'd start by writing a loop to iterate through all elements, and then you'd need to process each element individually by adding its square to an accumulator variable.
 
@@ -17,10 +17,14 @@ In a functional style, instead of loops, our building blocks are the following s
 
 (Aside: when we talk about functions here, we are referring to "pure functions", i.e. a way to transform some input data into some return value. Importantly, pure functions should not depend or modify any external data.)
 
-In this case the steps required are evident from the problem statement. We are after all trying to find the **sum** of **squares**, and to do this:
+In this case the steps required are evident from the problem statement. We are after all trying to find the *sum* of *squares*, and to do this:
 
-1. We have to square every number individually; and
-1. We have to sum all the results of part 1.
+1. We have to *square* every number individually; and
+1. We have to *sum* all the results of the previous step.
+
+Visually this is shown in the figure below:
+
+![mapreduce.png]
 
 In PySpark we can write this as a combination of the two above steps:
 
