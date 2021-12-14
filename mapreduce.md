@@ -10,7 +10,7 @@ Let's illustrate this by considering a simple problem: we are given a list of nu
 
 In an imperative style (which is probably what you're used to, using Python), you'd start by writing a loop to iterate through all elements, and then you'd need to process each element individually by adding its square to an accumulator variable.
 
-In a functional style, instead of loops, our building blocks are the following steps:
+In a functional style, instead of loops, our building blocks are the following:
 
 1. `map` : Apply a function to each element individually, outputting a new sequence;
 1. `reduce` : Combine all the data into one data point, using a "combining function".
@@ -22,11 +22,11 @@ In this case the steps required are evident from the problem statement. We are a
 1. We have to *square* every number individually; and
 1. We have to *sum* all the results of the previous step.
 
-Visually this is shown in the figure below:
+Visually this sequence is shown in the figure below:
 
 <img src="mapreduce.png" width="256" height="256">
 
-In PySpark we can write this as a combination of the two above steps:
+In PySpark we can write this as a combination of the two above steps, as follows.
 
 ```py
 def square(x):
@@ -38,9 +38,10 @@ def add(x, y):
 dataset.map(square).reduce(add)
 ```
 
-Or equivalently
+Equivalently and more concisely we can write this:
 
 ```py
 dataset.map(lambda x: x*x).reduce(lambda x, y: x+y)
 ```
 
+When this is run as a program or through spark RDD, it will (in some order) square each data value, then add all the values together (one by one). Importantly we have not specified the order in which this is done, so the program could pass in our data one by one, or it could compute all the squares first before summing one by one, or it could even parallelise the two steps to speed up computation.
